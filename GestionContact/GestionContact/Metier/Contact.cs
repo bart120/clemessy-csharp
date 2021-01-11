@@ -10,7 +10,7 @@ using System.Collections;
 
 namespace GestionContact.Metier
 {
-    public class Contact
+    public class Contact : IComparable<Contact>
     {
         public Contact()
         {
@@ -95,5 +95,13 @@ namespace GestionContact.Metier
             return resultat;
         }
 
+        public int CompareTo(Contact other)
+        {
+            var comp = this.Nom.CompareTo(other.Nom);
+            if(comp == 0)
+                return this.Prenom.CompareTo(other.Prenom);
+            return comp;
+
+        }
     }
 }

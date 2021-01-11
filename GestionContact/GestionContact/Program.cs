@@ -23,12 +23,42 @@ namespace GestionContact
                     case "2":
                         listerContact();
                         break;
+                    case "3":
+                        trierContact();
+                        break;
+                    case "4":
+                        trierContactParDate();
+                        break;
                     case "q":
                         return;
                     default:
                         Console.WriteLine("Choix incorrect.");
                         break;
                 }
+            }
+        }
+
+        private static void trierContactParDate()
+        {
+            List<Contact> liste = Contact.Lister();
+
+            liste.Sort(new ComparateurContactDate());
+
+            foreach (var item in liste)
+            {
+                Console.WriteLine(item.ToString());
+            }
+        }
+
+        private static void trierContact()
+        {
+            List<Contact> liste = Contact.Lister();
+            
+            liste.Sort();
+
+            foreach (var item in liste)
+            {
+                Console.WriteLine(item.ToString());
             }
         }
 
@@ -41,6 +71,8 @@ namespace GestionContact
                 Console.WriteLine(item.ToString());
             }
         }
+
+
 
         private static void ajouterContact()
         {
@@ -77,6 +109,8 @@ namespace GestionContact
             Console.WriteLine("-- MENU --");
             Console.WriteLine("1- Ajouter contact");
             Console.WriteLine("2- Lister les contacts");
+            Console.WriteLine("3- Trier les contacts");
+            Console.WriteLine("4- Trier les contacts par date");
             Console.WriteLine("q- Quitter");
         }
 
