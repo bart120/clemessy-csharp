@@ -52,11 +52,11 @@ namespace GestionContact.Metier
             get { return _email; }
             set
             {
-                Regex regex = new Regex(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
-                if (regex.IsMatch(value))
+                //Regex regex = new Regex(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
+                //if (regex.IsMatch(value))
                     _email = value;
-                else
-                    throw new FormatException("L'email n'est pas au bon format.");
+                //else
+                //    throw new FormatException("L'email n'est pas au bon format.");
             }
         }
 

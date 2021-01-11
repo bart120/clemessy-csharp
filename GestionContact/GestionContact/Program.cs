@@ -40,6 +40,9 @@ namespace GestionContact
                     case "7":
                         rechercherContactLinq();
                         break;
+                    case "8":
+                        relations();
+                        break;
                     case "q":
                         return;
                     default:
@@ -49,10 +52,50 @@ namespace GestionContact
             }
         }
 
+        private static void relations()
+        {
+            List<Contact> contacts = Contact.Lister();
+            List<Adresse> adresses = Adresse.Lister();
+
+            var resultat = from c in contacts
+                           join a in adresses on c.Email equals a.Mail
+                           where a.Ville == "paris"
+                           orderby c.Nom
+                           select new { c.Nom, c.Prenom, a.Ville };
+
+            foreach (var item in resultat)
+            {
+                Console.WriteLine(item.Nom + " " + item.Ville);
+            }
+
+        }
+
         private static void rechercherContactLinq()
         {
+            Console.WriteLine("Début ?");
+            var debut = Convert.ToDateTime(Console.ReadLine());
+            Console.WriteLine("Fin ?");
+            var fin = Convert.ToDateTime(Console.ReadLine());
+
+
             List<Contact> liste = Contact.Lister();
-            liste.Where();
+
+            Console.WriteLine("données en mémoire, continuer?");
+            Console.ReadLine();
+
+            //var resultat = liste.Where(c => c.DateNaissance > debut && c.DateNaissance < fin)
+            //    .OrderByDescending(c => c.Nom);
+
+
+            var resultat2 = from c in liste
+                            where c.DateNaissance > debut && c.DateNaissance < fin
+                            orderby c.Nom descending
+                            select c;
+
+            foreach (var item in resultat2)
+            {
+                Console.WriteLine(item.ToString());
+            }
         }
 
         private static void rechercherContactParMail()
@@ -174,6 +217,7 @@ namespace GestionContact
             Console.WriteLine("5- Rechercher les contacts par nom");
             Console.WriteLine("6- Rechercher les contacts par mail");
             Console.WriteLine("7- Linq");
+            Console.WriteLine("8- Relations");
             Console.WriteLine("q- Quitter");
         }
 

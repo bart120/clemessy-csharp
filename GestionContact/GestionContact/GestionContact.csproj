@@ -70,6 +70,7 @@
     <Reference Include="System.Xml" />
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="Metier\Adresse.cs" />
     <Compile Include="Metier\ComparateurContactDate.cs" />
     <Compile Include="Metier\Contact.cs" />
     <Compile Include="Program.cs" />
