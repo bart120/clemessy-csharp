@@ -74,6 +74,7 @@
     <Compile Include="Metier\Contact.cs" />
     <Compile Include="Program.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="Utils\Perso.cs" />
   </ItemGroup>
   <ItemGroup>
     <None Include="App.config" />
