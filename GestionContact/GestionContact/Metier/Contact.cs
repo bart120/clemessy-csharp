@@ -6,6 +6,7 @@ using System.Text;
 using System.Text.RegularExpressions;
 using System.Threading.Tasks;
 using System.Configuration;
+using System.Collections;
 
 namespace GestionContact.Metier
 {
@@ -14,15 +15,15 @@ namespace GestionContact.Metier
         public Contact()
         {
             this.DateNaissance = DateTime.Now;
-                
+
         }
 
-        public Contact(string nom):this()
+        public Contact(string nom) : this()
         {
             this.Nom = nom;
         }
 
-        public Contact(string nom, string prenom):this(nom)
+        public Contact(string nom, string prenom) : this(nom)
         {
             this.Prenom = prenom;
         }
@@ -49,7 +50,8 @@ namespace GestionContact.Metier
         public string Email
         {
             get { return _email; }
-            set {
+            set
+            {
                 Regex regex = new Regex(@"[a-z0-9!#$%&'*+/=?^_`{|}~-]+(?:\.[a-z0-9!#$%&'*+/=?^_`{|}~-]+)*@(?:[a-z0-9](?:[a-z0-9-]*[a-z0-9])?\.)+[a-z0-9](?:[a-z0-9-]*[a-z0-9])?");
                 if (regex.IsMatch(value))
                     _email = value;
@@ -65,6 +67,26 @@ namespace GestionContact.Metier
             {
                 sw.WriteLine(this.ToString());
             }
+
+            //File.AppendAllText(chemin, this.ToString());
+        }
+
+        public static List<Contact> Lister()
+        {
+            var liste = new List<Contact>();
+            var fichier = File.ReadLines(ConfigurationManager.AppSettings["chemin_fichier"]);
+            foreach (var ligne in fichier)
+            {
+                var tab = ligne.Split(';');
+                liste.Add(new Contact
+                {
+                    Nom = tab[0],
+                    Prenom = tab[1],
+                    Email = tab[2],
+                    DateNaissance = Convert.ToDateTime(tab[3])
+                });
+            }
+            return liste;
         }
 
         public override string ToString()

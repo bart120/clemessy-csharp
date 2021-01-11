@@ -1,5 +1,6 @@
 ﻿using GestionContact.Metier;
 using System;
+using System.Collections.Generic;
 using System.Text;
 
 namespace GestionContact
@@ -28,6 +29,16 @@ namespace GestionContact
                         Console.WriteLine("Choix incorrect.");
                         break;
                 }
+            }
+        }
+
+        private static void listerContact()
+        {
+            List<Contact> liste =  Contact.Lister();
+
+            foreach (var item in liste)
+            {
+                Console.WriteLine(item.ToString());
             }
         }
 
