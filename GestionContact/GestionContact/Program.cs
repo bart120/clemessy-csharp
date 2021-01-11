@@ -29,12 +29,56 @@ namespace GestionContact
                     case "4":
                         trierContactParDate();
                         break;
+                    case "5":
+                        rechercherContactParNom();
+                        break;
+                    case "6":
+                        rechercherContactParMail();
+                        break;
                     case "q":
                         return;
                     default:
                         Console.WriteLine("Choix incorrect.");
                         break;
                 }
+            }
+        }
+
+        private static void rechercherContactParMail()
+        {
+            List<Contact> liste = Contact.Lister();
+            Console.WriteLine("Domaine ?");
+            var domaine = Console.ReadLine();
+
+            //1
+            /*List<Contact> resultat = liste.FindAll(delegate (Contact c)
+            {
+                return c.Email.Contains(domaine);
+            });*/
+
+            //2
+            /*List<Contact> resultat = liste.FindAll(c =>
+            {
+                return c.Email.Contains(domaine);
+            });*/
+
+            //3
+            List<Contact> resultat = liste.FindAll(c => c.Email.Contains(domaine));
+
+            foreach (var item in resultat)
+            {
+                Console.WriteLine(item.ToString());
+            }
+        }
+
+        private static void rechercherContactParNom()
+        {
+            List<Contact> liste = Contact.Lister();
+
+            List<Contact> resultat = liste.FindAll(Contact.RechercheNom);
+            foreach (var item in resultat)
+            {
+                Console.WriteLine(item.ToString());
             }
         }
 
@@ -53,7 +97,7 @@ namespace GestionContact
         private static void trierContact()
         {
             List<Contact> liste = Contact.Lister();
-            
+
             liste.Sort();
 
             foreach (var item in liste)
@@ -64,7 +108,7 @@ namespace GestionContact
 
         private static void listerContact()
         {
-            List<Contact> liste =  Contact.Lister();
+            List<Contact> liste = Contact.Lister();
 
             foreach (var item in liste)
             {
@@ -111,6 +155,8 @@ namespace GestionContact
             Console.WriteLine("2- Lister les contacts");
             Console.WriteLine("3- Trier les contacts");
             Console.WriteLine("4- Trier les contacts par date");
+            Console.WriteLine("5- Rechercher les contacts par nom");
+            Console.WriteLine("6- Rechercher les contacts par mail");
             Console.WriteLine("q- Quitter");
         }
 

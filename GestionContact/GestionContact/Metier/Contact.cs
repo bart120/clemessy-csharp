@@ -89,6 +89,11 @@ namespace GestionContact.Metier
             return liste;
         }
 
+        public static bool RechercheNom(Contact c)
+        {
+            return c.Nom.Contains("o");
+        }
+
         public override string ToString()
         {
             string resultat = string.Format("{0};{1};{2};{3}", Nom, Prenom, Email, DateNaissance.ToString("dd/MM/yyyy"));
