@@ -26,7 +26,8 @@ namespace GestionAnnonce.Controllers
         {
             if (ModelState.IsValid)
             {
-                return null;
+                //enregistrement en base
+                return RedirectToAction("index");
             }
             else
             {
