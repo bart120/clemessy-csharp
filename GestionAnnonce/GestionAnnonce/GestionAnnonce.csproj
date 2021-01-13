@@ -149,6 +149,7 @@
     </Compile>
     <Compile Include="Models\Annonce.cs" />
     <Compile Include="Models\Categorie.cs" />
+    <Compile Include="Models\RechercheViewModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
@@ -165,6 +166,7 @@
     <Content Include="Views\Annonces\Details.cshtml" />
     <Content Include="Views\Annonces\Edit.cshtml" />
     <Content Include="Views\Annonces\Index.cshtml" />
+    <Content Include="Views\Shared\_ValidationScriptPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

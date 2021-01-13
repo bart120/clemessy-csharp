@@ -16,10 +16,29 @@ namespace GestionAnnonce.Controllers
         private GADbContext db = new GADbContext();
 
         // GET: Annonces
-        public ActionResult Index()
+        public ActionResult Index(RechercheViewModel model)
         {
-            var annonces = db.Annonces.Include(a => a.Categorie);
-            return View(annonces.ToList());
+            
+            IEnumerable<Annonce> annonces = db.Annonces.ToList();
+            if (!string.IsNullOrWhiteSpace(model.Label))
+            {
+                 annonces = annonces.Where(a => a.Label.Contains(model.Label));
+            }
+
+            if(model.DateDebut != null)
+            {
+                annonces = annonces.Where(a => a.DateCreation > model.DateDebut);
+            }
+
+            if (model.DateFin != null)
+            {
+                annonces = annonces.Where(a => a.DateCreation < model.DateFin);
+            }
+
+
+            //var annonces = db.Annonces.Include(a => a.Categorie);
+            ViewBag.Annonces = annonces.ToList();
+            return View();
         }
 
         // GET: Annonces/Details/5

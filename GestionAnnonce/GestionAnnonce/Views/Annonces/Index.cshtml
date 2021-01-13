@@ -1,8 +1,9 @@
-﻿@model IEnumerable<GestionAnnonce.Models.Annonce>
+﻿@model RechercheViewModel
 
 @{
     ViewBag.Title = "Index";
     Layout = "~/Views/Shared/_Layout.cshtml";
+    IEnumerable<Annonce> annonces = ViewBag.Annonces;
 }
 
 <h2>Index</h2>
@@ -10,49 +11,91 @@
 <p>
     @Html.ActionLink("Ajouter annonce", "Create")
 </p>
+
+<div class="panel panel-default">
+    <div class="panel-heading">Recherche</div>
+    <div class="panel-body">
+        @using (Html.BeginForm("index", "annonces", FormMethod.Get))
+        {
+        <div class="form-horizontal">
+            <div class="form-group">
+                @Html.LabelFor(model => model.Label, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.Label, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DateDebut, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DateDebut, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+            <div class="form-group">
+                @Html.LabelFor(model => model.DateFin, htmlAttributes: new { @class = "control-label col-md-2" })
+                <div class="col-md-10">
+                    @Html.EditorFor(model => model.DateFin, new { htmlAttributes = new { @class = "form-control" } })
+                </div>
+            </div>
+
+
+            <div class="form-group">
+                <div class="col-md-offset-2 col-md-10">
+                    <input type="submit" value="Rechercher" class="btn btn-default" />
+                </div>
+            </div>
+        </div>
+
+        }
+    </div>
+</div>
+
+
 <table class="table">
     <tr>
         <th>
-            @Html.DisplayNameFor(model => model.Categorie.Nom)
+            @Html.DisplayName("annonces.Categorie.Nom")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Label)
+            @Html.DisplayName("annonces.Label")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Description)
+            @Html.DisplayName("annonces.Description")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.DateCreation)
+            @Html.DisplayName("annonces.DateCreation")
         </th>
         <th>
-            @Html.DisplayNameFor(model => model.Statut)
+            @Html.DisplayName("annonces.Statut")
         </th>
         <th></th>
     </tr>
 
-@foreach (var item in Model) {
-    <tr>
-        <td>
-            @Html.DisplayFor(modelItem => item.Categorie.Nom)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Label)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Description)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.DateCreation)
-        </td>
-        <td>
-            @Html.DisplayFor(modelItem => item.Statut)
-        </td>
-        <td>
-            @Html.ActionLink("Edit", "Edit", new { id=item.ID }) |
-            @Html.ActionLink("Details", "Details", new { id=item.ID }) |
-            @Html.ActionLink("Delete", "Delete", new { id=item.ID })
-        </td>
-    </tr>
-}
+    @foreach (var item in annonces)
+    {
+        <tr>
+            <td>
+                @Html.DisplayFor(modelItem => item.Categorie.Nom)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Label)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Description)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.DateCreation)
+            </td>
+            <td>
+                @Html.DisplayFor(modelItem => item.Statut)
+            </td>
+            <td>
+                @Html.ActionLink("Edit", "Edit", new { id = item.ID }) |
+                @Html.ActionLink("Details", "Details", new { id = item.ID }) |
+                @Html.ActionLink("Delete", "Delete", new { id = item.ID })
+            </td>
+        </tr>
+    }
 
 </table>

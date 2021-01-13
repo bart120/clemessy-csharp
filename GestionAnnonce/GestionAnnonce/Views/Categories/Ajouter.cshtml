@@ -8,11 +8,14 @@
 
 <h2>Ajouter une catégorie</h2>
 
+
+
 @using (Html.BeginForm())
 {
     <div>
         @Html.ValidationSummary(true, "", new { @class = "text-danger" })
     </div>
+
     <div class="form-group">
         @Html.LabelFor(x => x.Nom)
         @Html.EditorFor(x => x.Nom, new { htmlAttributes = new { @class = "form-control" } })
@@ -25,4 +28,8 @@
         @Html.ValidationMessageFor(x => x.Description, "", new { @class = "text-danger" })
     </div>
     <button type="submit" class="btn btn-default">Enregistrer</button>
+}
+
+@section SectionScript{
+    @Html.Partial("_ValidationScriptPartial")
 }
