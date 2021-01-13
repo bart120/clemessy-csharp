@@ -130,6 +130,7 @@
     <Compile Include="Controllers\AnnoncesController.cs" />
     <Compile Include="Controllers\CategoriesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\SharedController.cs" />
     <Compile Include="Data\GADbContext.cs" />
     <Compile Include="Data\MigrationConfiguration.cs" />
     <Compile Include="Global.asax.cs">
@@ -167,6 +168,7 @@
     <Content Include="Views\Annonces\Edit.cshtml" />
     <Content Include="Views\Annonces\Index.cshtml" />
     <Content Include="Views\Shared\_ValidationScriptPartial.cshtml" />
+    <Content Include="Views\Shared\_MenuPartial.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>

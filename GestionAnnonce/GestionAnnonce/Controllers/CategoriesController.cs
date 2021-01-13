@@ -37,6 +37,9 @@ namespace GestionAnnonce.Controllers
         [HttpGet]
         public ActionResult Ajouter()
         {
+            //var categories = _db.Categories.ToList();
+            //ViewData["Categories"] = categories;
+            //ViewBag.Categories = categories;
             return View();
         }
 
