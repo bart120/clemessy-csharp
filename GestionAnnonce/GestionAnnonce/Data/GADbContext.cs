@@ -25,6 +25,8 @@ namespace GestionAnnonce.Data
 
         public DbSet<Categorie> Categories { get; set; }
 
+        public DbSet<Annonce> Annonces { get; set; }
+
         public static void Log(string message)
         {
             Debug.WriteLine(message);

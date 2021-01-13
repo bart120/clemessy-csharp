@@ -24,5 +24,7 @@ namespace GestionAnnonce.Models
         [DataType(DataType.MultilineText)]
         [Required(ErrorMessage = "Description obligatoire")]
         public string Description { get; set; }
+
+        //public ICollection<Annonce> Annonces { get; set; }
     }
 }

@@ -5,6 +5,7 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using System.Xml.Linq;
 
 namespace GestionAnnonce.Controllers
 {
@@ -16,6 +17,14 @@ namespace GestionAnnonce.Controllers
         {
             var categories = _db.Categories.ToList();
             return View(categories);
+
+            //XDocument doc = XDocument.Load("...");
+            /*var noms = from el in doc.Root.Elements("Name")
+                       where (string)el.Attribute("Type") == "M"
+                       select el;*/
+
+            //var nom = doc.Root.Elements("Name").Where(el => (string)el.Attribute("Type") == "M");
+
         }
 
         [HttpGet]

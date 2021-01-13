@@ -139,6 +139,15 @@
     <Compile Include="Migrations\202101121505420_Init.designer.cs">
       <DependentUpon>202101121505420_Init.cs</DependentUpon>
     </Compile>
+    <Compile Include="Migrations\202101130837472_AjoutAnnonce.cs" />
+    <Compile Include="Migrations\202101130837472_AjoutAnnonce.designer.cs">
+      <DependentUpon>202101130837472_AjoutAnnonce.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Migrations\202101130848031_AjoutCategorieToAnnonce.cs" />
+    <Compile Include="Migrations\202101130848031_AjoutCategorieToAnnonce.designer.cs">
+      <DependentUpon>202101130848031_AjoutCategorieToAnnonce.cs</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Annonce.cs" />
     <Compile Include="Models\Categorie.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -146,12 +155,16 @@
     <Content Include="Views\web.config" />
     <None Include="packages.config" />
     <Content Include="Views\Home\Index.cshtml" />
-    <Content Include="Views\Annonces\Ajouter.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
     <Content Include="Scripts\jquery-1.9.1.min.map" />
     <Content Include="Views\Categories\Ajouter.cshtml" />
     <Content Include="Views\Categories\Index.cshtml" />
     <Content Include="Views\Categories\Detail.cshtml" />
+    <Content Include="Views\Annonces\Create.cshtml" />
+    <Content Include="Views\Annonces\Delete.cshtml" />
+    <Content Include="Views\Annonces\Details.cshtml" />
+    <Content Include="Views\Annonces\Edit.cshtml" />
+    <Content Include="Views\Annonces\Index.cshtml" />
     <None Include="Web.Debug.config">
       <DependentUpon>Web.config</DependentUpon>
     </None>
@@ -165,6 +178,12 @@
   <ItemGroup>
     <EmbeddedResource Include="Migrations\202101121505420_Init.resx">
       <DependentUpon>202101121505420_Init.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101130837472_AjoutAnnonce.resx">
+      <DependentUpon>202101130837472_AjoutAnnonce.cs</DependentUpon>
+    </EmbeddedResource>
+    <EmbeddedResource Include="Migrations\202101130848031_AjoutCategorieToAnnonce.resx">
+      <DependentUpon>202101130848031_AjoutCategorieToAnnonce.cs</DependentUpon>
     </EmbeddedResource>
   </ItemGroup>
   <ItemGroup>
