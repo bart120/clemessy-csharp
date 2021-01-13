@@ -18,6 +18,9 @@ namespace GestionAnnonce.Controllers
             var categories = _db.Categories.ToList();
             return View(categories);
 
+            Session["NAME"] = "bob";
+            Response.Cookies.Add(new HttpCookie( "name", "Bob" ));
+
             //XDocument doc = XDocument.Load("...");
             /*var noms = from el in doc.Root.Elements("Name")
                        where (string)el.Attribute("Type") == "M"
